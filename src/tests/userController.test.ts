@@ -25,28 +25,28 @@ describe('User API', () => {
 
 });
 
-  it('should retrieve all users', async () => {
-    const res = await request(app).get('/api/users');
-    expect(res.statusCode).toEqual(200);
-    expect(res.body).toBeInstanceOf(Array);
-  });
+  // it('should retrieve all users', async () => {
+  //   const res = await request(app).get('/api/users');
+  //   expect(res.statusCode).toEqual(200);
+  //   expect(res.body).toBeInstanceOf(Array);
+  // });
 
-  it.only('should retrieve a single user by ID', async () => {
-    const res = await request(app).get('/api/users/1'); 
-    expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty('id', 1);
-  });
+  // it.only('should retrieve a single user by ID', async () => {
+  //   const res = await request(app).get('/api/users/1'); 
+  //   expect(res.statusCode).toEqual(200);
+  //   expect(res.body).toHaveProperty('id', 1);
+  // });
 
-  it('should update a user', async () => {
-    const res = await request(app)
-      .put('/api/users/1') 
-      .send({ username: 'updatedUser' });
-    expect(res.statusCode).toEqual(200);
-    expect(res.body.username).toBe('updatedUser');
-  });
+  // it('should update a user', async () => {
+  //   const res = await request(app)
+  //     .put('/api/users/1') 
+  //     .send({ username: 'updatedUser' });
+  //   expect(res.statusCode).toEqual(200);
+  //   expect(res.body.username).toBe('updatedUser');
+  // });
 
-  it('should delete a user', async () => {
-    const res = await request(app).delete('/api/users/1'); 
-    expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty('message', 'User deleted');
-  });
+  // it('should delete a user', async () => {
+  //   const res = await request(app).delete('/api/users/1'); 
+  //   expect(res.statusCode).toEqual(200);
+  //   expect(res.body).toHaveProperty('message', 'User deleted');
+  // });

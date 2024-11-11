@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { Comment } from "../models/Commet";
+import { Comment } from "../models/Comment";
 
 
 export const creatComment = async(req:Request, res:Response) =>{

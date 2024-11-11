@@ -11,9 +11,9 @@ export default {
         updatedAt: new Date(),
       },
       {
-        username: 'muawiya',
-        email: 'muawiya@example.com',
-        password: 'password123',
+        username: 'radi',
+        email: 'radi@example.com',
+        password: '0123456789',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

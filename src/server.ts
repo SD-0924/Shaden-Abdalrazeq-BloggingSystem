@@ -8,15 +8,17 @@ import categoryRoutes from './routes/categoryRoutes';
 
 import { Sequelize } from 'sequelize';
 import config from './config/config';
+import { sequelize, User, Post, Comment, Category } from './database';
 
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app= express();
-const env = (process.env.NODE_ENV || 'development') as 'development' | 'test' | 'production';
-const sequelizeConfig = config[env];
+// const env = (process.env.NODE_ENV || 'development') as 'development' | 'test' | 'production';
+// const sequelizeConfig = config[env];
 
-const sequelize = new Sequelize(sequelizeConfig);
+// const sequelize = new Sequelize(sequelizeConfig);
+
 
 app.use(express.json());
 
@@ -35,9 +37,14 @@ app.use((err:Error, req: Request, res:Response, next:NextFunction)=>{
 });
 
 sequelize.authenticate()
-    .then(()=>{
+    .then(async()=>{
         console.log('Database connection established successfully.');
-        return sequelize.sync();
+        try {
+        await sequelize.sync(); // Ensures all models are in sync
+        console.log('All models were synchronized successfully.');
+        } catch (syncError) {
+        console.error('Error syncing models:', syncError);
+        }
     })
     .then(() =>{
         if (process.env.NODE_ENV !== 'test'){

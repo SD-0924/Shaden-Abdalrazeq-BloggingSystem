@@ -23,7 +23,7 @@ class Post extends Model<PostAttributes> implements PostAttributes {
     // Define associations here
     Post.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
     Post.hasMany(models.Comment, {foreignKey: 'postId', as:'comments', onDelete:'CASCADE'});
-    Post.belongsToMany(models.category, {through: 'PostCategories', as:'Categories', foreignKey:'postId',otherKey:'categoryId'});
+    Post.belongsToMany(models.Category, { through: 'PostCategories', as: 'categories', foreignKey: 'postId', otherKey: 'categoryId' });
   }
 }
 

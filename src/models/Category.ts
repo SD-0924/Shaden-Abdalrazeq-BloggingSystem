@@ -1,5 +1,5 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
-
+import {Post} from './Post';
 
 interface CategoryAttributes {
   id?: number;
@@ -18,11 +18,12 @@ class Category extends Model<CategoryAttributes, CategoryCreationAttributes> imp
   public readonly updatedAt!: Date;
 
   static associate(models: any) {
-    Category.belongsToMany(models.Post, {
-      through: 'PostCategories',
-      as: 'posts',
-      foreignKey: 'categoryId'
-    });
+    Category.belongsToMany(Post, {
+    through: 'PostCategories', // Specify the join table name only
+    foreignKey: 'categoryId',
+    otherKey: 'postId',
+    as: 'posts',
+  });
   }
 }
 
